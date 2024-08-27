@@ -1,5 +1,6 @@
 package com.unrn.bd.crud.entity;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 public class Promotion {
@@ -13,8 +14,12 @@ public class Promotion {
 
     public Promotion(String type, LocalDate starDate, LocalDate endDate, String brand, int discount) {
         this.type = type;
-        this.startDate = starDate;
-        this.endDate = endDate;
+        if (validate_dates(starDate, endDate)) {
+            this.startDate = starDate;
+            this.endDate = endDate;
+        } else {
+            throw new DateTimeException("Error: Fechas de la promocion invalidas.");
+        }
         this.brand = brand;
         this.discount = discount;
     }
@@ -28,40 +33,40 @@ public class Promotion {
         this.discount = discount;
     }
 
-    public int getId() {
+    private int getId() {
         return id;
     }
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
     public String getType() {
         return type;
     }
-    public void setType(String type) {
+    private void setType(String type) {
         this.type = type;
     }
-    public LocalDate getStartDate() {
+    private LocalDate getStartDate() {
         return startDate;
     }
-    public void setStartDate(LocalDate startDate) {
+    private void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-    public LocalDate getEndDate() {
+    private LocalDate getEndDate() {
         return endDate;
     }
-    public void setEndDate(LocalDate endDate) {
+    private void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
-    public String getBrand() {
+    public String sgetBrand() {
         return brand;
     }
-    public void setBrand(String brand) {
+    private void setBrand(String brand) {
         this.brand = brand;
     }
     public int getDiscount() {
         return discount;
     }
-    public void setDiscount(int discount) {
+    private void setDiscount(int discount) {
         this.discount = discount;
     }
 
@@ -71,5 +76,10 @@ public class Promotion {
                 now.isEqual(this.endDate) || now.isBefore(this.endDate)); 
     }
 
+    private boolean validate_dates(LocalDate start, LocalDate end){
+        LocalDate now = LocalDate.now();
+        return (start.isEqual(now) || start.isAfter(now) && 
+                start.isBefore(end) || start.isEqual(end));
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.unrn.bd.crud.entity;
 
+import java.util.Locale.Category;
+
 public class Product {
 
     private int id;
@@ -12,9 +14,21 @@ public class Product {
     public Product(String code, String brand, String description, double price, Category category) {
         this.code = code;
         this.brand = brand;
-        this.description = description;
-        this.price = price;
-        this.category = category;
+        if (description == null) {
+            throw new IllegalArgumentException("Error: Debe agregar una descripcion al Producto.");
+        } else {
+            this.description = description;
+        }
+        if (price == 0.0) {
+            throw new IllegalArgumentException("Error: Debe asignar un precio al Producto.");
+        } else {
+            this.price = price;
+        }
+        if (category == null) {
+            throw new IllegalArgumentException("Error: Debe asignar una categoria al Producto.");
+        } else {
+            this.category = category;
+        }
     } 
 
     public Product(int id, String code, String brand, String description, double price, Category category) {
@@ -26,44 +40,42 @@ public class Product {
         this.category = category;
     }
 
-    public int getId() {
+    private int getId() {
         return id;
     }
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
-    public String getCode() {
+    private String getCode() {
         return code;
     }
-    public void setCode(String code) {
+    private void setCode(String code) {
         this.code = code;
     }
     public String getBrand() {
         return brand;
     }
-    public void setBrand(String brand) {
+    private void setBrand(String brand) {
         this.brand = brand;
     }
-    public String getDescription() {
+    private String getDescription() {
         return description;
     }
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
     public double getPrice() {
         return price;
     }
-    public void setPrice(double price) {
+    private void setPrice(double price) {
         this.price = price;
     }
-    public Category getCategory() {
+    private Category getCategory() {
         return category;
     }
-    public void setCategory(Category category) {
+    private void setCategory(Category category) {
         this.category = category;
     }
-
-    
 
 
 

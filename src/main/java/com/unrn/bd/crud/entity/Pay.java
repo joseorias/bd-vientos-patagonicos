@@ -25,22 +25,22 @@ public class Pay {
         this.creditCard = card;
     }
 
-    public int getId() {
+    private int getId() {
         return id;
     }
 
 
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
 
-    public double getAmount() {
+    private double getAmount() {
         return amount;
     }
 
 
-    public void setAmount(double amount) {
+    private void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -50,17 +50,17 @@ public class Pay {
     }
 
 
-    public void setApproved(boolean approved) {
+    private void setApproved(boolean approved) {
         this.approved = approved;
     }
 
 
-    public CreditCard getCreditCard() {
+    private CreditCard getCreditCard() {
         return creditCard;
     }
 
 
-    public void setCreditCard(CreditCard creditCard) {
+    private void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
 

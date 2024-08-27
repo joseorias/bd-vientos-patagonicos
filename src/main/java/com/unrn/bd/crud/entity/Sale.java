@@ -32,49 +32,49 @@ public class Sale {
         this.promotions = promotions;
     }
 
-    public int getId() {
+    private int getId() {
         return id;
     }
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
-    public LocalDate getSale_date() {
+    private LocalDate getSale_date() {
         return sale_date;
     }
-    public void setSale_date(LocalDate sale_date) {
+    private void setSale_date(LocalDate sale_date) {
         this.sale_date = sale_date;
     }
-    public double getTotal() {
+    private double getTotal() {
         return total;
     }
-    public void setTotal(double total) {
+    private void setTotal(double total) {
         this.total = total;
     }
-    public String getState() {
+    private String getState() {
         return state;
     }
-    public void setState(String state) {
+    private void setState(String state) {
         this.state = state;
     }
-    public Set<Product> getProducts() {
+    private Set<Product> getProducts() {
         return products;
     }
-    public void setProducts(Set<Product> products) {
+    private void setProducts(Set<Product> products) {
         this.products = products;
     }
-    public Pay getPay() {
+    private Pay getPay() {
         return pay;
     }
-    public void setPay(Pay pay) {
+    private void setPay(Pay pay) {
         this.pay = pay;
     }
-    public Client getClient() {
+    private Client getClient() {
         return client;
     }
-    public void setClient(Client client) {
+    private void setClient(Client client) {
         this.client = client;
     }
-    public Set<Promotion> getPromotions() {
+    private Set<Promotion> getPromotions() {
         return promotions;
     }
     public void setPromotions(Set<Promotion> promotions) {
@@ -102,7 +102,7 @@ public class Sale {
         }
         return null;
     }
-    public double calcTotal(){
+    private double calcTotal(){
         double totalSale = 0;
         if (!this.promotions.isEmpty()){
             for (Promotion promo : this.promotions){
@@ -126,7 +126,7 @@ public class Sale {
         return totalSale;
     }
 
-    public boolean finaliceSale(CreditCard card){
+    private boolean finaliceSale(CreditCard card){
         double total = this.calcTotal();
         Promotion promo = this.promo_for_card();
         if (promo != null){
