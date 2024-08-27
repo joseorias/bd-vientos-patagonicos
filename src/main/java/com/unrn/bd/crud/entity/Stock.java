@@ -17,22 +17,22 @@ public class Stock {
         this.quantity = quantity;
     }
 
-    public int getId() {
+    private int getId() {
         return id;
     }
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
-    public int getQuantity() {
+    private int getQuantity() {
         return quantity;
     }
-    public void setQuantity(int quantity) {
+    private void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public Product getProduct() {
+    private Product getProduct() {
         return product;
     }
-    public void setProduct(Product product) {
+    private void setProduct(Product product) {
         this.product = product;
     }
 

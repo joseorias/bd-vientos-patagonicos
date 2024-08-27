@@ -28,35 +28,35 @@ public class CreditCard {
         this.owner = owner;
     }
 
-    public int getId() {
+    private int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
-    public int getNumber() {
+    private int getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    private void setNumber(int number) {
         this.number = number;
     }
 
-    public LocalDate getIssueDate() {
+    private LocalDate getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(LocalDate issueDate) {
+    private void setIssueDate(LocalDate issueDate) {
         this.issueDate = issueDate;
     }
 
-    public LocalDate getExpiryDate() {
+    private LocalDate getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(LocalDate expiryDate) {
+    private void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
     }
 
@@ -64,15 +64,15 @@ public class CreditCard {
         return line;
     }
 
-    public void setLine(String line) {
+    private void setLine(String line) {
         this.line = line;
     }
 
-    public Client getOwner() {
+    private Client getOwner() {
         return owner;
     }
 
-    public void setOwner(Client owner) {
+    private void setOwner(Client owner) {
         this.owner = owner;
     }
 
