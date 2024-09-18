@@ -1,31 +1,38 @@
 package tp.model;
 
 import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class CreditCard {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String number;
     private LocalDate issueDate;
     private LocalDate expiryDate;
     private String line;
-    private Client owner;
+    private int id_owner;
 
-    public CreditCard(String number, LocalDate issuDate, LocalDate expiryDate, String line, Client owner) {
+    public CreditCard(String number, LocalDate issuDate, LocalDate expiryDate, String line, int id_owner) {
         this.number = number;
         this.issueDate = issuDate;
         this.expiryDate = expiryDate;
         this.line = line;
-        this.owner = owner;
+        this.id_owner = id_owner;
     }
 
-    public CreditCard(int id, String number, LocalDate issuDate, LocalDate expiryDate, String line, Client owner) {
+    public CreditCard(int id, String number, LocalDate issuDate, LocalDate expiryDate, String line, int id_owner) {
         this.id = id;
         this.number = number;
         this.issueDate = issuDate;
         this.expiryDate = expiryDate;
         this.line = line;
-        this.owner = owner;
+        this.id_owner = id_owner;
     }
 
 
@@ -79,13 +86,13 @@ public class CreditCard {
     }
 
     @SuppressWarnings("unused")
-    private Client getOwner() {
-        return owner;
+    private int getIdOwner() {
+        return id_owner;
     }
 
     @SuppressWarnings("unused")
-    private void setOwner(Client owner) {
-        this.owner = owner;
+    private void setIdOwner(int id_owner) {
+        this.id_owner = id_owner;
     }
 
 
