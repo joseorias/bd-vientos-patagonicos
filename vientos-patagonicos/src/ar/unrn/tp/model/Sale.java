@@ -3,9 +3,16 @@ package tp.model;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.HashSet;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Sale {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDate sale_date;
     private double total;
@@ -13,15 +20,13 @@ public class Sale {
     private Set<Product> products = new HashSet<>();
     private Pay pay;
     private Client client;
-    private Set<Promotion> promotions = new HashSet<>();
-
+    
     public Sale(LocalDate sale_date, String state){
         this.sale_date = sale_date;
         this.state = state;
     }
 
-    public Sale(int id, LocalDate sale_date, double total, String state, Set<Product> products, Pay pay, Client client,
-                Set<Promotion> promotions){
+    public Sale(int id, LocalDate sale_date, double total, String state, Set<Product> products, Pay pay, Client client){
         this.id = id;
         this.sale_date = sale_date;
         this.total = total;
@@ -29,7 +34,6 @@ public class Sale {
         this.products = products;
         this.pay = pay;
         this.client = client;
-        this.promotions = promotions;
     }
 
     @SuppressWarnings("unused")
@@ -80,10 +84,12 @@ public class Sale {
         this.products = products;
     }
 
+    @SuppressWarnings("unused")
     private Pay getPay() {
         return pay;
     }
 
+    @SuppressWarnings("unused")
     private void setPay(Pay pay) {
         this.pay = pay;
     }
@@ -97,36 +103,18 @@ public class Sale {
         this.client = client;
     }
 
-    @SuppressWarnings("unused")
-    private Set<Promotion> getPromotions() {
-        return promotions;
-    }
-    public void setPromotions(Set<Promotion> promotions) {
-        this.promotions = promotions;
-    }
-
     
     public void addProduct(Product product){
         this.products.add(product);
     }
 
-    public void addPromotion(Promotion promotion){
-        this.promotions.add(promotion);
-    }
-
+    @SuppressWarnings("unused")
     private static double discounted(double mount, int percentage){
         return mount - ((mount * percentage) / 100);
     }
 
-    private Promotion promo_for_card(){
-        for (Promotion promo : this.promotions){
-            if (promo.getType() == "De compra") {
-                return promo;
-            }
-        }
-        return null;
-    }
-    public double calcTotal(){
+   /*
+    * public double calcTotal(){
         double totalSale = 0;
         double subtotal = 0;
         if (!this.promotions.isEmpty()){
@@ -149,6 +137,9 @@ public class Sale {
         }
         return totalSale;
     }
+    
+    
+
 
     public boolean finaliceSale(CreditCard card){
         double total = this.calcTotal();
@@ -166,7 +157,7 @@ public class Sale {
             this.state = "Pendiente de Pago";
             return false;
         }
-    }
+    }*/
     
 
 }

@@ -1,7 +1,15 @@
 package tp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String code;
     private String brand;
@@ -58,7 +66,6 @@ public class Product {
         this.code = code;
     }
 
-    @SuppressWarnings("unused")
     public String getBrand() {
         return brand;
     }
@@ -68,7 +75,6 @@ public class Product {
         this.brand = brand;
     }
 
-    @SuppressWarnings("unused")
     public String getDescription() {
         return description;
     }
@@ -78,7 +84,6 @@ public class Product {
         this.description = description;
     }
 
-    @SuppressWarnings("unused")
     public double getPrice() {
         return price;
     }
