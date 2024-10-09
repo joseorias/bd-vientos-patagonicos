@@ -4,16 +4,15 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 
-	<persistence-unit name="objectdb:vientospatagonicos.odb">
-		<description>My Persistence Unit</description>
-		<class>Client</class>
-		<class>CreditCard</class>
+	<persistence-unit name="jpa-objectdb">
+	<description>My Persistence Unit</description>
+	<provider>com.objectdb.jpa.Provider</provider>
+			
 		<properties>
-			<property name="javax.persistence.jdbc.url"
-				value="\Users\usuar\Documents\UNRN\Bases de Datos II\Practicas\objectdbs\vientospatagonicos.odb" />
+			<property name="javax.persistence.jdbc.url" 
+			value="\Users\usuar\Documents\UNRN\Bases de Datos II\Practicas\objectdbs\testobjectdb.odb"/>
 			<property name="javax.persistence.jdbc.user" value="admin" />
-			<property name="javax.persistence.jdbc.password"
-				value="admin" />
+			<property name="javax.persistence.jdbc.password" value="admin" />
 		</properties>
 	</persistence-unit>
 

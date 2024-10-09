@@ -1,9 +1,11 @@
 package tp.model;
 
 import java.time.LocalDate;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +19,12 @@ public class Sale {
     private LocalDate sale_date;
     private double total;
     private String state;
-    private Set<Product> products = new HashSet<>();
+    private List<Integer> products = new ArrayList<>();
+
+    @Embedded
     private Pay pay;
+
+    @Embedded
     private Client client;
     
     public Sale(LocalDate sale_date, String state){
@@ -26,18 +32,20 @@ public class Sale {
         this.state = state;
     }
 
-    public Sale(int id, LocalDate sale_date, double total, String state, Set<Product> products, Pay pay, Client client){
+    public Sale(int id, LocalDate sale_date, String state, Client client){
         this.id = id;
         this.sale_date = sale_date;
-        this.total = total;
         this.state = state;
-        this.products = products;
-        this.pay = pay;
         this.client = client;
     }
 
-    @SuppressWarnings("unused")
-    private int getId() {
+    public Sale(LocalDate sale_date, String state, Client client){
+        this.sale_date = sale_date;
+        this.state = state;
+        this.client = client;
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -74,13 +82,11 @@ public class Sale {
         this.state = state;
     }
 
-    @SuppressWarnings("unused")
-    private Set<Product> getProducts() {
+    public List<Integer> getProducts() {
         return products;
     }
 
-    @SuppressWarnings("unused")
-    private void setProducts(Set<Product> products) {
+    public void setProducts(List<Integer> products) {
         this.products = products;
     }
 
@@ -89,13 +95,11 @@ public class Sale {
         return pay;
     }
 
-    @SuppressWarnings("unused")
-    private void setPay(Pay pay) {
+    public void setPay(Pay pay) {
         this.pay = pay;
     }
 
-    @SuppressWarnings("unused")
-    private Client getClient() {
+    public Client getClient() {
         return client;
     }
     
@@ -104,61 +108,8 @@ public class Sale {
     }
 
     
-    public void addProduct(Product product){
-        this.products.add(product);
+    public void addProduct(int id_product){
+        this.products.add(id_product);
     }
-
-    @SuppressWarnings("unused")
-    private static double discounted(double mount, int percentage){
-        return mount - ((mount * percentage) / 100);
-    }
-
-   /*
-    * public double calcTotal(){
-        double totalSale = 0;
-        double subtotal = 0;
-        if (!this.promotions.isEmpty()){
-            for (Product prod : this.products){
-                for (Promotion promo : this.promotions){
-                    if (promo.isCurrent()) {
-                            if (promo.getBrand() == prod.getBrand()){
-                                subtotal = discounted(prod.getPrice(), promo.getDiscount());
-                            } else {
-                                subtotal = prod.getPrice();
-                            }
-                    }
-                }
-            totalSale = totalSale + subtotal;
-            }
-        } else {
-            for (Product prod : this.products){
-                totalSale = totalSale + prod.getPrice();
-            }
-        }
-        return totalSale;
-    }
-    
-    
-
-
-    public boolean finaliceSale(CreditCard card){
-        double total = this.calcTotal();
-        Promotion promo = this.promo_for_card();
-        if (promo != null){
-            if (promo.getBrand() == card.getLine()){
-                this.total = discounted(total, promo.getDiscount());
-            }
-        }
-        this.setPay(new Pay(total, card));
-        if (this.getPay().isApproved()){
-            this.state = "Finalizada";
-            return true;
-        } else {
-            this.state = "Pendiente de Pago";
-            return false;
-        }
-    }*/
-    
 
 }
-
