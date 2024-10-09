@@ -16,23 +16,20 @@ public class CreditCard {
     private LocalDate issueDate;
     private LocalDate expiryDate;
     private String line;
-    private int id_owner;
 
-    public CreditCard(String number, LocalDate issuDate, LocalDate expiryDate, String line, int id_owner) {
+    public CreditCard(String number, LocalDate issuDate, LocalDate expiryDate, String line) {
         this.number = number;
         this.issueDate = issuDate;
         this.expiryDate = expiryDate;
         this.line = line;
-        this.id_owner = id_owner;
     }
 
-    public CreditCard(int id, String number, LocalDate issuDate, LocalDate expiryDate, String line, int id_owner) {
+    public CreditCard(int id, String number, LocalDate issuDate, LocalDate expiryDate, String line) {
         this.id = id;
         this.number = number;
         this.issueDate = issuDate;
         this.expiryDate = expiryDate;
         this.line = line;
-        this.id_owner = id_owner;
     }
 
 
@@ -46,8 +43,7 @@ public class CreditCard {
         this.id = id;
     }
 
-    @SuppressWarnings("unused")
-    private String getNumber() {
+    public String getNumber() {
         return number;
     }
 
@@ -56,8 +52,7 @@ public class CreditCard {
         this.number = number;
     }
 
-    @SuppressWarnings("unused")
-    private LocalDate getIssueDate() {
+    public LocalDate getIssueDate() {
         return issueDate;
     }
 
@@ -66,8 +61,7 @@ public class CreditCard {
         this.issueDate = issueDate;
     }
 
-    @SuppressWarnings("unused")
-    private LocalDate getExpiryDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
@@ -85,16 +79,5 @@ public class CreditCard {
         this.line = line;
     }
 
-    @SuppressWarnings("unused")
-    private int getIdOwner() {
-        return id_owner;
-    }
-
-    @SuppressWarnings("unused")
-    private void setIdOwner(int id_owner) {
-        this.id_owner = id_owner;
-    }
-
-
-
+    
 }

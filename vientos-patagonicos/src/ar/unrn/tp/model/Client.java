@@ -1,9 +1,14 @@
 package tp.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
@@ -17,6 +22,9 @@ public class Client {
     private String dni;
     private String email;
 
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private Set<CreditCard> cards = new HashSet<>();
+
     public Client(){
 
     }
@@ -28,8 +36,15 @@ public class Client {
         this.email = email;
     }
 
-    @SuppressWarnings("unused")
-    private int getId() {
+    public Client(int id, String name, String lastname, String dni, String email) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.dni = dni;
+        this.email = email;
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -69,6 +84,19 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @SuppressWarnings("unused")
+    private void setCards(Set<CreditCard> cards) {
+        this.cards = cards;
+    }
+
+    public Set<CreditCard> getCards(){
+        return this.cards;
+    }
+
+    public void add_card(CreditCard card) {
+        this.cards.add(card);
     }
 
 }

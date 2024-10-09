@@ -1,6 +1,5 @@
 package tp.model;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -22,12 +21,8 @@ public class Promotion {
 
     public Promotion(String type, LocalDate starDate, LocalDate endDate, String brand, int discount) {
         this.type = type;
-        if (validate_dates(starDate, endDate)) {
-            this.startDate = starDate;
-            this.endDate = endDate;
-        } else {
-            throw new DateTimeException("Error: Fechas de la promocion invalidas.");
-        }
+        this.startDate = starDate;
+        this.endDate = endDate;
         this.brand = brand;
         this.discount = discount;
     }
@@ -93,14 +88,9 @@ public class Promotion {
 
     public boolean isCurrent(){
         LocalDate now = LocalDate.now();
-        return (now.isEqual(this.startDate) || now.isAfter(this.startDate) &&
-                now.isEqual(this.endDate) || now.isBefore(this.endDate)); 
+        return (now.isEqual(this.getStartDate()) || now.isAfter(this.getStartDate()) &&
+                now.isEqual(this.getEndDate()) || now.isBefore(this.getEndDate())); 
     }
-
-    private boolean validate_dates(LocalDate start, LocalDate end){
-        LocalDate now = LocalDate.now();
-        return (start.isEqual(now) || start.isBefore(now) && 
-                start.isBefore(end) || start.isEqual(end));
-    }
+    
 
 }

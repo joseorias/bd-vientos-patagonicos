@@ -15,39 +15,26 @@ public class Product {
     private String brand;
     private String description;
     private double price;
-    private Category category;
+    private int id_category;
 
-    public Product(String code, String brand, String description, double price, Category category) {
+    public Product(String code, String brand, String description, double price, int id_category) {
         this.code = code;
         this.brand = brand;
-        if (description == null) {
-            throw new IllegalArgumentException("Error: Debe agregar una descripcion al Producto.");
-        } else {
-            this.description = description;
-        }
-        if (price == 0.0) {
-            throw new IllegalArgumentException("Error: Debe asignar un precio al Producto.");
-        } else {
-            this.price = price;
-        }
-        if (category == null) {
-            throw new IllegalArgumentException("Error: Debe asignar una categoria al Producto.");
-        } else {
-            this.category = category;
-        }
+        this.description = description;
+        this.price = price;
+        this.id_category = id_category;
     } 
 
-    public Product(int id, String code, String brand, String description, double price, Category category) {
+    public Product(int id, String code, String brand, String description, double price, int id_category) {
         this.id = id;
         this.code = code;
         this.brand = brand;
         this.description = description;
         this.price = price;
-        this.category = category;
+        this.id_category = id_category;
     }
 
-    @SuppressWarnings("unused")
-    private int getId() {
+    public int getId() {
         return id;
     }
 
@@ -56,13 +43,11 @@ public class Product {
         this.id = id;
     }
 
-    @SuppressWarnings("unused")
-    private String getCode() {
+    public String getCode() {
         return code;
     }
 
-    @SuppressWarnings("unused")
-    private void setCode(String code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -70,8 +55,7 @@ public class Product {
         return brand;
     }
 
-    @SuppressWarnings("unused")
-    private void setBrand(String brand) {
+    public void setBrand(String brand) {
         this.brand = brand;
     }
 
@@ -79,8 +63,7 @@ public class Product {
         return description;
     }
 
-    @SuppressWarnings("unused")
-    private void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -88,17 +71,15 @@ public class Product {
         return price;
     }
 
-    @SuppressWarnings("unused")
-    private void setPrice(double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
-    public Category getCategory() {
-        return category;
+    public int getIdCategory() {
+        return id_category;
     }
 
-    @SuppressWarnings("unused")
-    private void setCategory(Category category) {
-        this.category = category;
+    public void setIdCategory(int id_category) {
+        this.id_category = id_category;
     }
 
 
